@@ -1,0 +1,74 @@
+# JAP를 활용한 CRUD, Intellij IDE 설정
+#
+# SPRING1 수업을 위한 기본 환경 설정
+
+1) JDK 버전 확인
+ - JSP에서 사용했던 JDK 21 버전 그대로 사용
+
+2) Intellij IDEA Community 버전 설치
+ - https://www.jetbrains.com/ko-kr/idea/download/?section=windows
+ - exe 파일 실행 후, 순차적으로 진행 (별다른 설정 없음, 다음다음다음 누르면 됨)
+ - Ultimate 버전은 유료, Community 버전은 무료
+
+3) Spring Boot Project 생성
+ - https://start.spring.io
+ - 위 홈페이지에 접속해 Spring Initializr을 통해 프로젝트 빌드 파일을 생성한다
+
+   - Project : Gradle - Groovy
+   - Language : Java
+   - Spring Boot : 3.4.x 버전 선택
+    ** 3.5.x 버전 이슈
+    - 24. 06. 06 일자를 기점으로 3.5.x 버전에서 Mybatis 관련 라이브러리 호환 이슈 발생(사용불가)
+    - Project Metadata : Group -kr.or
+                         Artifact - ddit
+                         Name : JPAProject (원하는 명칭)
+                         Description : 간략한 설명 아무거나
+                         Package Name : kr.or.ddit (base package)
+    - Packaging : Jar
+    - Java : 21 (사용 환경에 따라 다르지만, 현재 우리는 21을 활용중)
+
+ - Add Dependencies를 클릭 후, 필요 라이브러리 등록
+     > Spring Web : 웹 개발을 위함
+     > Mustache : 페이지 작성 시, 사용 (jsp와 같은 페이지를 만들 때 사용할 템플릿 엔진)
+     > Spring Data JPA : 자바코드와 데이터베이스를 연동하기 위한 설정 (메서드 기반의 JPA)
+     > H2 Database : 데이터베이스로 사용할 H2 DB
+     > Lombok : 데이터 바인딩 클래스 자동 생성 (setter, getter, toString, bean, 생성자 등등)
+     등록 완료 후, Generate 버튼 클릭하여 프로젝트 파일 내려받기
+
+# SpringBoot Project 생성 및 프로젝트 설정
+
+1) 내려받은 프로젝트 파일 열기
+- IntelliJ IDEA 실행 후, 내려받은 프로젝트 파일 열기
+    > project 신뢰 체크 후 신뢰 버튼 클릭
+2) IntelliJ 한국어 언어 팩 적용 해제
+- 실무에서는 한글 버전보다는 영문 버전을 많이 사용하므로 한글 언어팩 해제
+-  File > Settings >Plugins > Korean Language Pack 체크 해제 > 적용 후 확인 > 다시 시작
+
+3) JDK 설정
+- Run this build using a Java 17 or newer JVM. 와 같은 에러가 발생할 수 있으므로 JDK 설정
+- build.gradle 파일을 열고 아래의 설정값으로 설정한다.
+    > sourceCompatibility = '21'
+
+4) Gradle Build 설정
+- File > Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM 21 설정
+    : Gradle 메뉴에서 Gradle JVM 항목의 'Add JSKFrom disk...' 클릭 후 JDK 폴더 설정
+
+5) Project SDK
+- File > Project Structure > Project > SDK : 21, Language level : SDK Default
+- File > Project Structure > Modules > Language level : Project default
+--------------------------------------------- 현시점 까지 적용하면 'Apply'을 눌러 적용한다.
+
+6) Gradle Refresh
+- IntelliJ IDEA 화면 오른쪽에 코끼리 아이콘 클릭
+- Reload 버튼 클릭 후 , Refresh 실행 (빌드 영역에 로그가 올라오는걸 확인한다.(망치같이 생긴 연장 아이콘))
+
+7) Build 성공 확인
+- BUILD SUCCESSFUL in 1s 로그가 나타났다면 성공!
+
+# IntelliJ 화면 테마 바꾸기
+
+1) 인텔리제이 설정
+- File > Settings 또는 Ctrl + Alt + s로 설정을 들어간다
+- Appearance & Behavior > Appearance > Theme 란의 원하는 테마로 설정
+    > Dark, Light, Light With Light Header 등등 중 원하는 테마로 설정 > OK
+
