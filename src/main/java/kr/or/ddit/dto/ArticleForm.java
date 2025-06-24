@@ -8,7 +8,7 @@ import lombok.*;
 
 // @NoArgsConstructor 어노테이션은 ArticleForm 클래스에 선언된 필드를 사용하지 않고 기본 생성자를 생성할 때 사용합니다.
 // @Getter와 @Setter 어노테이션은 dto 클래스의 getter/setter 메서드를 만들 때 사용합니다.
-// @ToString 어노테이션은 toString() 메소드 자동 생성할 때 사용합니다.
+// @ToString 어노테이션은 toString() 메소드 자동 생성할 때 사용합니다.lksadjflkwjdlfk;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
